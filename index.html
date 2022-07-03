@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Jerm Actions</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.17.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://www.google.com/jsapi"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+	</head>
+	<body>
+    <div id="app">
+      <div class="bg-slate-800 w-screen h-screen relative">
+			  <div class="flex flex-col h-screen justify-center items-center text-5xl text-white text-bold p-20">
+          <template v-if="page === 1">
+            การทดสอบซอฟต์แวร์
+          </template>
+          <template v-else-if="page === 2">
+            <img src="https://github.com/runyasak/monk-actions-assets/blob/main/Screen%20Shot%202565-07-03%20at%2010.56.16.png?raw=true" alt="stat-image">
+          </template>
+          <div v-else-if="page === 3" class="text-center">
+            การทดสอบซอฟต์แวร์<br />ใช้งบประมาณสูง
+          </div>
+          <div v-else-if="page === 4" class="text-8xl">
+            แอคชันเจิม
+          </div>
+			  </div>
+        <div class="absolute bottom-0 left-0 p-4">
+          นำขึ้น บน คชสารเฟรมเวิร์ค
+        </div>
+        <div class="absolute bottom-0 right-0 flex gap-8 p-4">
+          <button class="btn" @click="onPreviousPage"><</button>
+          <button class="btn" @click="onNextPage">></button>
+        </div>
+		  </div>
+    </div>
+	</body>
+  <script>
+    const { createApp } = Vue
+  
+    createApp({
+      data() {
+        return {
+          message: 'Hello Vue!',
+          page: 1,
+        }
+      },
+      methods: {
+        onNextPage() {
+          this.page += 1
+        },
+        onPreviousPage() {
+          this.page = Math.max(this.page - 1, 1)
+        }
+      }
+    }).mount('#app')
+  </script>
+	<style>
+		:root {
+			font-family: 'Noto Serif Thai', serif;
+		}
+	</style>
+</html>
